@@ -1,0 +1,46 @@
+{
+  "name": "i18n-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "i18n-pick": "bin/i18n-pick.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "i18n": "node bin/i18n-pick.js",
+    "xlsx": "node lib/toExcel.js",
+    "read": "node lib/readExcel.js"
+  },
+  "author": "panyifei",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/parser": "^7.8.8",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-syntax-jsx": "^7.8.3",
+    "@babel/plugin-syntax-typescript": "^7.0.0",
+    "@babel/plugin-transform-typescript": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.0.0",
+    "@babel/traverse": "^7.8.6",
+    "@vue/compiler-core": "^3.0.0-alpha.9",
+    "@vue/compiler-dom": "^3.0.0-alpha.9",
+    "chalk": "^3.0.0",
+    "commander": "^2.9.0",
+    "core-js": "^2.6.11",
+    "glob": "^7.1.1",
+    "lodash": "^4.17.15",
+    "n-readlines": "^0.2.7",
+    "rimraf": "^2.6.2",
+    "shelljs": "^0.8.3",
+    "vue-loader": "^15.9.0",
+    "vue-template-compiler": "^2.6.11",
+    "xlsx": "^0.15.5"
+  }
+}

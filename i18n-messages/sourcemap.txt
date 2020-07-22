@@ -1,0 +1,2 @@
+ 众相 #text#/Users/yezhanwang/Documents/myProjects/i18n-pick/example/layout.vue#14#34#0
+众相#text#/Users/yezhanwang/Documents/myProjects/i18n-pick/example/layout.vue#22#22#1
