@@ -102,3 +102,8 @@ dist
 
 # TernJS port file
 .tern-port
+
+# exclude local files
+example
+i18n-messages/*
+i18n-sources/*
