@@ -1,21 +1,15 @@
 [
 	{
-		"id": " 众相 ",
-		"defaultMessage": " 众相 ",
-		"source": [
-			{
-				"type": 2,
-				"location": "/Users/yezhanwang/Documents/myProjects/i18n-pick/example/layout.vue#14#34"
-			}
-		]
-	},
-	{
 		"id": "众相",
 		"defaultMessage": "众相",
 		"source": [
 			{
 				"type": 2,
-				"location": "/Users/yezhanwang/Documents/myProjects/i18n-pick/example/layout.vue#22#22"
+				"location": "/Users/zakj/Documents/GitHub/i18n-cli/example/layout.vue#14#34"
+			},
+			{
+				"type": 2,
+				"location": "/Users/zakj/Documents/GitHub/i18n-cli/example/layout.vue#20#22"
 			}
 		]
 	}

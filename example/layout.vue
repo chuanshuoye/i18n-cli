@@ -11,15 +11,13 @@
           v-if="collapsed"
           placement="right"
         >
-          <template slot='title'>
-            众相
-          </template>
+          <template slot='title'>众相</template>
           <a-icon
             type="deployment-unit"
             style="font-size: 28px;line-height: 68px;font-weight: bold;"
           />
         </a-tooltip>
-        <span v-else>{{$t('众相')}}</span>
+        <span v-else>众相</span>
       </div>
       <menu-list style="height: calc(100% - 54px);overflow-y: auto;"></menu-list>
     </a-layout-sider>

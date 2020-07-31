@@ -72,8 +72,8 @@ i18n.config.json
 }
 ```
 
-### 贡献者
+### TODO
 
-多谢以下贡献者：
-
-- [AceLeeWinnie](https://github.com/AceLeeWinnie)
+- `autoKey`需要增加一个自定义资源key的配置处理
+- **Vue**项目关于expression中的中文匹配问题
+- 默认未执行`prettier`代码格式化导致位置匹配错误问题
