@@ -5,7 +5,6 @@
 - 执行指令 `导出Excel`
 - 等待翻译文件
 - 执行指令 `读取Excel`
-- 将新的**zh-CH.json**覆盖掉**i18n-messages**下的同名文件
 - 重新执行指令 `导出zh_CN.js`
 - react 项目执行指令 `自动注入替换`, vue 项目执行指令 `中文全量替换`
 - 将重新处理的文件使用到真实项目中进行替换,并将**zh_CN.js**内容作为国际化 Locale
@@ -42,7 +41,7 @@
 
 ### 读取 Excel
 
-- 将翻译好的 excel 文件复制到**i18n-sources**目录，并重命名为`SheetJS.xlsx`,注意 excel 第一行表头是`id`,`defaultMessage`;
+- 将翻译好的 excel 文件复制到**i18n-sources**目录，并重命名为`SheetJS.xlsx`,注意 excel 第一行表头是`id`,`defaultMessage`,`key`;
 - 会在**i18n-sources**目录生成一份**data.json**文件
 
 `npm run read`
@@ -66,14 +65,18 @@ i18n.config.json
     "**/demo.{js,jsx}"
   ],
   // 是否统计函数参数中的中文
-  "callExpression": false,
+  "callExpression": true,
   // 自动中文做key
   "autoZhKey": true,
+  // 自定义资源Key
+  "getKey": (item) => {
+    return item.id;
+  }
 }
 ```
 
 ### TODO
 
-- `autoKey`需要增加一个自定义资源key的配置处理
-- **Vue**项目关于expression中的中文匹配问题
+- `autoKey`需要增加一个自定义资源 key 的配置处理
+- **Vue**项目关于 expression 中的中文匹配问题
 - 默认未执行`prettier`代码格式化导致位置匹配错误问题

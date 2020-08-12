@@ -1,8 +1,0 @@
-开关#text#/Users/zakj/Documents/GitHub/i18n-cli/example/Demo.vue#39#16#0
-徽标#text#/Users/zakj/Documents/GitHub/i18n-cli/example/Demo.vue#50#16#1
-用户管理#text#/Users/zakj/Documents/GitHub/i18n-cli/example/Demo.vue#83#13#2
-用户管理#text#/Users/zakj/Documents/GitHub/i18n-cli/example/Demo.vue#86#34#3
-配置管理#text#/Users/zakj/Documents/GitHub/i18n-cli/example/Demo.vue#89#13#4
-配置管理#text#/Users/zakj/Documents/GitHub/i18n-cli/example/Demo.vue#92#34#5
-角色管理#text#/Users/zakj/Documents/GitHub/i18n-cli/example/Demo.vue#95#13#6
-角色管理#text#/Users/zakj/Documents/GitHub/i18n-cli/example/Demo.vue#98#34#7

@@ -83,16 +83,16 @@ function generateAndWrite(sourceObj) {
 let data = null;
 try {
     data = require(sourceMapPath);
-} catch(e) {
+} catch (e) {
     console.log('获取映射文件出错！', e);
-return;
+    return;
 }
 
-data.forEach(item=>{
-    item.source.forEach(src=>{
+data.forEach(item => {
+    item.source.forEach(src => {
         const [filename, line, column] = src.location.split('#');
         const opts = {
-            key: item.id,
+            key: config.getKey ? config.getKey(item) : item.id,
             text: item.defaultMessage,
             textType: src.type,
             filename: filename,
@@ -101,7 +101,7 @@ data.forEach(item=>{
         };
         const flag = generateAndWrite(opts);
         if (flag) {
-            console.log('替换成功，'+opts.text+' => '+opts.key+' #'+src.location);
+            console.log('替换成功，' + opts.text + ' => ' + opts.key + ' #' + src.location);
         }
     })
 });

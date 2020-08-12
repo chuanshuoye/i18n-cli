@@ -1,12 +1,14 @@
-
 const _config = {
   "importStatement": "import { I18N } from '@common/I18N';",
   "callStatement": "I18N.get",
   "targetDir": "i18n-messages",
   "exclude": [],
   "textPattern": /\s*[\u4e00-\u9fa5]\s*/,
-  "callExpression": false,
+  "callExpression": true,
   "autoZhKey": true,
+  "getKey": (item) => { // 重写资源Key
+    return item.id;
+  }
 }
 const path = require('path');
 module.exports = function () {
