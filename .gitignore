@@ -104,6 +104,6 @@ dist
 .tern-port
 
 # exclude local files
-example
-i18n-messages/*
-i18n-sources/*
+# example
+# i18n-messages/*
+# i18n-sources/*
