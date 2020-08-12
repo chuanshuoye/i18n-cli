@@ -3,7 +3,7 @@
 - 将需要翻译的文件夹 Copy 一份到当前项目工作目录下
 - 执行指令 `扫描`
 - 执行指令 `导出Excel`
-- 等待翻译文件
+- 等待翻译文件，并覆盖原 Excel 文件
 - 执行指令 `读取Excel`
 - 重新执行指令 `导出zh_CN.js`
 - react 项目执行指令 `自动注入替换`, vue 项目执行指令 `中文全量替换`
@@ -19,20 +19,6 @@
 - vue
   `npm run i18n scan vue [需要翻译的目录]`
 
-### 导出 zh_CN.js
-
-`npm run i18n export`
-
-### 自动注入替换（暂只支持 react）
-
-`npm run i18n pick`
-
-### 中文全量替换（暂时支持 vue）
-
-- 表达式情况会遗漏，这块暂时没空去优化了，后面再看能不能集成 AST 去处理
-
-`npm run i18n vue`
-
 ### 导出 Excel
 
 - 会导出到**i18n-sources**目录
@@ -47,6 +33,20 @@
 `npm run read`
 
 - 重新生成**zh-CH.json**文件
+
+### React 自动替换
+
+`npm run i18n pick`
+
+### Vue 中文替换
+
+- 表达式情况会遗漏，这块暂时没空去优化了，后面再看能不能集成 AST 去处理
+
+`npm run i18n vue`
+
+### 导出 zh_CN.js
+
+`npm run i18n export`
 
 ### 配置
 
