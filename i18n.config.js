@@ -7,7 +7,7 @@ const _config = {
   "callExpression": true,
   "autoZhKey": true,
   "getKey": (item) => { // 重写资源Key
-    return item.id;
+    return item.key ? item.key : item.id;
   }
 }
 const path = require('path');

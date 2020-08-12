@@ -34,8 +34,14 @@ function generateAndWrite(sourceObj) {
     if (!sourceObj) return;
     const { key, text, textType, filename, line, column } = sourceObj;
 
-    const left = textType == 'jsx' ? '{' : '';
-    const right = textType == 'jsx' ? '}' : '';
+    let left = textType == 'jsx' ? '{' : '';
+    let right = textType == 'jsx' ? '}' : '';
+
+    if(textType == 'template') {
+        left = '${';
+        right = '}';
+    }
+
 
     // 拿到文件数据
     const data = fs.readFileSync(filename, 'utf8');
