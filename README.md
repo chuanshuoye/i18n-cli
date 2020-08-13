@@ -70,8 +70,6 @@ i18n.config.json
   "exclude": [
     "**/demo.{js,jsx}"
   ],
-  // 是否统计函数参数中的中文
-  "callExpression": true,
   // 自动中文做key
   "autoZhKey": true,
   // 自定义资源Key

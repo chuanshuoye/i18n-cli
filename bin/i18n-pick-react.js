@@ -17,16 +17,18 @@ const sourceMapPath = path.join(process.cwd(), targetDir, 'zh-CH.json');
 
 
 function replace(text, chinese, replaceString) {
-    let textArr = text.split(/intl\.get\(.+?\)/);
-    const newArr = JSON.parse(JSON.stringify(textArr));
-    textArr.forEach((item, index, arr) => {
-        arr[index] = item.replace(chinese, replaceString);
-    });
-    newArr.forEach((item, index, arr) => {
-        if (item !== textArr[index]) {
-            text = text.replace(item, textArr[index]);
-        }
-    })
+    if (text) {
+        let textArr = text.split(/I18N\.get\(.+?\)/);
+        const newArr = JSON.parse(JSON.stringify(textArr));
+        textArr.forEach((item, index, arr) => {
+            arr[index] = item.replace(chinese, replaceString);
+        });
+        newArr.forEach((item, index, arr) => {
+            if (item !== textArr[index]) {
+                text = text.replace(item, textArr[index]);
+            }
+        })
+    }
     return text;
 }
 
@@ -37,7 +39,7 @@ function generateAndWrite(sourceObj) {
     let left = textType == 'jsx' ? '{' : '';
     let right = textType == 'jsx' ? '}' : '';
 
-    if(textType == 'template') {
+    if (textType == 'template') {
         left = '${';
         right = '}';
     }
@@ -52,6 +54,7 @@ function generateAndWrite(sourceObj) {
     let chinese = text.replace(/\\"/g, '"');
     const replaceString = `${left}${callStatement}('${key}')${right}`;
     // 这里是为了匹配前后如果有引号的情况
+    if (!arr[line - 1]) return;
     arr[line - 1] = replace(arr[line - 1], `"${chinese}"`, replaceString);
     if (temp1 === arr[line - 1]) {
         arr[line - 1] = replace(arr[line - 1], `'${chinese}'`, replaceString);
