@@ -1,6 +1,6 @@
 {
   "name": "@za/i18n-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -8,11 +8,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "i18n": "node bin/i18n-pick.js",
-    "xlsx": "node lib/toExcel.js",
-    "read": "node lib/readExcel.js"
+    "i18n": "node bin/i18n-pick.js"
   },
-  "author": "panyifei",
+  "author": "zhanwangye",
   "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.0.0",

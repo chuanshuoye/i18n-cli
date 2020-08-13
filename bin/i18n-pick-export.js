@@ -6,6 +6,7 @@ const path = require('path');
 const config = require('../i18n.config')();
 
 const dir = config.targetDir;
+const getKey = config.getKey;
 
 const targetPath = `${dir}/zh_CN.js`;
 const srcPath = path.join(process.cwd(), dir, 'zh-CH.json');
@@ -20,8 +21,7 @@ const result = {};
 // const result = [];
 data.forEach(d => {
   if (result[d.id]) return console.log(`"${d.defaultMessage}"与"${result[d.id]}" key 值相同，请修改！`);
-  result[d.id] = d.defaultMessage
-  // result.push(d.id)
+  result[getKey ? getKey(d) : d.id] = d.defaultMessage;
 });
 // DONE: 重写 targetPath 文件
 fs.writeFile(targetPath, JSON.stringify(result, null, '\t'), function (err) {
