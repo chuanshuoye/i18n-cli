@@ -8,6 +8,19 @@ zanpm install @za/i18n-cli -g
 
 - `"node"`: **>12**
 
+## 本地项目 Babel Plugin 涉及依赖库
+
+- @babel/preset-typescript
+- @babel/env
+- @babel/preset-react
+- @babel/plugin-transform-typescript
+- @babel/plugin-syntax-typescript
+- @babel/plugin-syntax-jsx
+- @babel/plugin-proposal-decorators
+- @babel/plugin-proposal-class-properties
+- @babel/plugin-proposal-object-rest-spread
+- @babel/plugin-syntax-dynamic-import
+
 ## 具体使用方法
 
 - 终端打开到当前项目工作目录下
