@@ -3,7 +3,7 @@ const _config = {
   "callStatement": "I18N.get",
   "targetDir": "i18n-messages",
   "exclude": [],
-  "textPattern": /\s*[\u4e00-\u9fa5]\s*/,
+  "textPattern": /[\u4e00-\u9fa5]/,
   "autoZhKey": true,
   "getKey": (item) => { // 重写资源Key
     return item.key ? item.key : item.id;

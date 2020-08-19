@@ -56,8 +56,7 @@ function generateAndWrite(sourceObj) {
     console.log(filename, key, '缺少defaultMessage字段值！')
     return;
   }
-  let replaceString = `${left}'${key}'${right}`;
-
+  let replaceString = `${left}'${key}'${right}`
   // 这里是为了匹配前后如果有引号的情况
   if ([6, 7].includes(textType)) {
     arr[line - 1] = replace(arr[line - 1], `"${chinese}"`, `"${replaceString}"`);
@@ -72,17 +71,19 @@ function generateAndWrite(sourceObj) {
   if ([2, 12].includes(textType)) {
     replaceString = `{{${left}'${key}'${right}}}`;
   }
-
+  // jsx语法
   if (textType == 'jsx') {
     left = '{' + `${callStatement}(`;
     right = ')}';
+    replaceString = `${left}'${key}'${right}`;
   }
   // 模版语法
   if (textType == 'template') {
     left = '${' + `${callStatement}(`;
     right = ')}';
+    replaceString = `${left}'${key}'${right}`;
   }
-  // console.log(replaceString, line - 1)
+
   if (!arr[line - 1]) return;
   arr[line - 1] = replace(arr[line - 1], `"${chinese}"`, replaceString);
   if (temp1 === arr[line - 1]) {
@@ -96,6 +97,7 @@ function generateAndWrite(sourceObj) {
           if (temp2 === arr[line]) {
             arr[line] = replace(arr[line], chinese, replaceString);
             if (temp2 === arr[line]) {
+              console.log(arr[line])
               if (arr[line].indexOf(text) !== -1 ||
                 arr[line - 1].indexOf(text) !== -1) {
                 console.log('失败，请手动替换', JSON.stringify(sourceObj, null, "\t"));
