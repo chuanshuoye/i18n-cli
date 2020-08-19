@@ -1,7 +1,7 @@
 ## 安装
 
 ```bash
-sudo zanpm install @za/i18n-cli -g
+zanpm install @za/i18n-cli -g
 ```
 
 ## 具体使用方法
@@ -56,26 +56,24 @@ sudo zanpm install @za/i18n-cli -g
 
 ### 配置
 
-i18n.config.json
+i18n.config.js
 
 ```js
-{
+module.exports = {
   // 引用语句
-  "importStatement": "import { I18N } from '@common/I18N';",
+  importStatement: "import { I18N } from '@common/I18N';",
   // 调用语句
-  "callStatement": "I18N.get",
+  callStatement: 'I18N.get',
   // 语言文件目标目录
-  "targetDir": "i18n-messages",
+  targetDir: 'i18n-messages',
   // 不予扫描的文件，遵循 glob
-  "exclude": [
-    "**/demo.{js,jsx}"
-  ],
+  exclude: [],
   // 自动中文做key
-  "autoZhKey": true,
+  autoZhKey: true,
   // 自定义资源Key
-  "getKey": (item) => {
-    return item.id;
-  }
+  getKey: (item) => {
+    return item.id
+  },
 }
 ```
 

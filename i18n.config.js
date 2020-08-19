@@ -13,7 +13,7 @@ const path = require('path');
 module.exports = function () {
   let config = {};
   try {
-    config = require(path.join(process.cwd(), 'i18n.config.json'));
+    config = require(path.join(process.cwd(), 'i18n.config.js'));
   } catch (e) {
     config = {};
   }
