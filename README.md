@@ -95,6 +95,30 @@ module.exports = {
 }
 ```
 
+## 关于引用文件：@common/I18N
+
+### 示例
+
+- webpack alias
+
+```json
+alias: {
+    '@common': path.resolve(__dirname, 'src/common'),
+}
+```
+
+- src/common/I18N.js
+
+```js
+const zh_cn = require('xxx/ZH_CN.js')
+
+module.exports = {
+  get: (key) => {
+    return zh_cn(key)
+  },
+}
+```
+
 ### TODO
 
 - 需要增加一个自定义资源 key 的配置处理`getKey = () => {}`
