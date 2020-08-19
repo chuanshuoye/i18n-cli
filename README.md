@@ -6,7 +6,8 @@ zanpm install @za/i18n-cli -g
 
 ## 环境
 
-- `"node"`: **>12**
+- `node`: **>12**
+- `babel`: **>7**
 
 ## 本地项目 Babel Plugin 涉及依赖库
 
