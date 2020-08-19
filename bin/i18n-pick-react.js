@@ -52,6 +52,10 @@ function generateAndWrite(sourceObj) {
     const temp1 = arr[line - 1];
     const temp2 = arr[line];
     let chinese = text.replace(/\\"/g, '"');
+    if (!chinese) {
+        console.log(filename, key, '缺少defaultMessage字段值！')
+        return;
+    }
     const replaceString = `${left}${callStatement}('${key}')${right}`;
     // 这里是为了匹配前后如果有引号的情况
     if (!arr[line - 1]) return;

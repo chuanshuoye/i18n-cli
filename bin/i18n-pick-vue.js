@@ -24,7 +24,7 @@ function testAttr(text, exp) {
 
 function replace(text, chinese, replaceString) {
   if (text) {
-    let textArr = text.split(/\$t\(.+?\)/);
+    let textArr = text.split(/I18N\.get\(.+?\)/);
     const newArr = JSON.parse(JSON.stringify(textArr));
     textArr.forEach((item, index, arr) => {
       arr[index] = item.replace(chinese, replaceString);
@@ -40,11 +40,10 @@ function replace(text, chinese, replaceString) {
 
 function generateAndWrite(sourceObj) {
   if (!sourceObj) return;
-  // console.log(sourceObj)
   const { key, attr, text, textType, filename, line, column } = sourceObj;
 
-  const left = '$t(';
-  const right = ')';
+  let left = `${callStatement}(`;
+  let right = ')';
 
   // 拿到文件数据
   const data = fs.readFileSync(filename, 'utf8');
@@ -53,7 +52,12 @@ function generateAndWrite(sourceObj) {
   const temp1 = arr[line - 1];
   const temp2 = arr[line];
   let chinese = text.replace(/\\"/g, '"');
+  if (!chinese) {
+    console.log(filename, key, '缺少defaultMessage字段值！')
+    return;
+  }
   let replaceString = `${left}'${key}'${right}`;
+
   // 这里是为了匹配前后如果有引号的情况
   if ([6, 7].includes(textType)) {
     arr[line - 1] = replace(arr[line - 1], `"${chinese}"`, `"${replaceString}"`);
@@ -64,30 +68,38 @@ function generateAndWrite(sourceObj) {
       }
     }
   }
-  else if ([2, 12].includes(textType)) {
+
+  if ([2, 12].includes(textType)) {
     replaceString = `{{${left}'${key}'${right}}}`;
-    arr[line - 1] = replace(arr[line - 1], `${chinese}`, `${replaceString}`);
   }
-  else {
-    replaceString = `${left}'${key}'${right}`;
-    if (!arr[line - 1]) return;
-    arr[line - 1] = replace(arr[line - 1], `"${chinese}"`, replaceString);
+
+  if (textType == 'jsx') {
+    left = '{' + `${callStatement}(`;
+    right = ')}';
+  }
+  // 模版语法
+  if (textType == 'template') {
+    left = '${' + `${callStatement}(`;
+    right = ')}';
+  }
+  // console.log(replaceString, line - 1)
+  if (!arr[line - 1]) return;
+  arr[line - 1] = replace(arr[line - 1], `"${chinese}"`, replaceString);
+  if (temp1 === arr[line - 1]) {
+    arr[line - 1] = replace(arr[line - 1], `'${chinese}'`, replaceString);
     if (temp1 === arr[line - 1]) {
-      arr[line - 1] = replace(arr[line - 1], `'${chinese}'`, replaceString);
+      arr[line - 1] = replace(arr[line - 1], chinese, replaceString);
       if (temp1 === arr[line - 1]) {
-        arr[line - 1] = replace(arr[line - 1], chinese, replaceString);
-        if (temp1 === arr[line - 1]) {
-          arr[line] = replace(arr[line], `"${chinese}"`, replaceString);
+        arr[line] = replace(arr[line], `"${chinese}"`, replaceString);
+        if (temp2 === arr[line]) {
+          arr[line] = replace(arr[line], `'${chinese}'`, replaceString);
           if (temp2 === arr[line]) {
-            arr[line] = replace(arr[line], `'${chinese}'`, replaceString);
+            arr[line] = replace(arr[line], chinese, replaceString);
             if (temp2 === arr[line]) {
-              arr[line] = replace(arr[line], chinese, replaceString);
-              if (temp2 === arr[line]) {
-                if (arr[line].indexOf(text) !== -1 ||
-                  arr[line - 1].indexOf(text) !== -1) {
-                  console.log('失败，请手动替换', JSON.stringify(sourceObj, null, "\t"));
-                  return 0;
-                }
+              if (arr[line].indexOf(text) !== -1 ||
+                arr[line - 1].indexOf(text) !== -1) {
+                console.log('失败，请手动替换', JSON.stringify(sourceObj, null, "\t"));
+                return 0;
               }
             }
           }
@@ -95,6 +107,7 @@ function generateAndWrite(sourceObj) {
       }
     }
   }
+  // }
 
   const result = arr.join('\n');
   fs.writeFileSync(filename, result, 'utf8');

@@ -30,6 +30,8 @@
     "@babel/types": "^7.11.0",
     "@vue/compiler-core": "3.0.0-alpha.9",
     "@vue/compiler-dom": "3.0.0-alpha.9",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
     "chalk": "^3.0.0",
     "commander": "^2.9.0",
     "core-js": "^2.6.11",
