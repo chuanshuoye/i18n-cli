@@ -1,12 +1,16 @@
 const _config = {
-  "importStatement": "import { I18N } from '@common/I18N';",
-  "callStatement": "I18N.get",
+  "importStatement": "import { $t } from '@common/I18N';",
+  "callStatement": "$t",
+  "callPattern": /\$t\(.+?\)/,
   "targetDir": "i18n-messages",
   "exclude": [],
   "textPattern": /[\u4e00-\u9fa5]/,
   "autoZhKey": true,
-  "getKey": (item) => { // 重写资源Key
+  "setKey": (item) => { // 重写资源Key
     return "CONSOLE_KEY_" + Math.random(1000);
+  },
+  "getKey": (item) => { // 读取资源Key
+    return item.key ? item.key : item.id;
   }
 }
 const path = require('path');

@@ -12,13 +12,14 @@ program.parse(process.argv);
 const needImport = [];
 const importStatement = config.importStatement;
 const callStatement = config.callStatement;
+const callPattern = config.callPattern;
 const targetDir = config.targetDir;
 const sourceMapPath = path.join(process.cwd(), targetDir, 'zh-CH.json');
 
 
 function replace(text, chinese, replaceString) {
     if (text) {
-        let textArr = text.split(/I18N\.get\(.+?\)/);
+        let textArr = text.split(callPattern);
         const newArr = JSON.parse(JSON.stringify(textArr));
         textArr.forEach((item, index, arr) => {
             arr[index] = item.replace(chinese, replaceString);

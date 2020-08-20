@@ -4,12 +4,13 @@
 const path = require('path');
 const XLSX = require('xlsx');
 const locales = require(path.join(process.cwd(), './i18n-messages/zh-CH.json'));
+const config = require('../i18n.config')();
 
 const result = locales.map(i => {
   return {
     'id': i.id,
     'defaultMessage': '',
-    'key': ''
+    'key': config.setKey ? config.setKey(i) : ''
   }
 });
 

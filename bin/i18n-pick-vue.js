@@ -13,6 +13,7 @@ program.parse(process.argv);
 const needImport = [];
 const importStatement = config.importStatement;
 const callStatement = config.callStatement;
+const callPattern = config.callPattern;
 const targetDir = config.targetDir;
 const sourceMapPath = path.join(process.cwd(), targetDir, 'zh-CH.json');
 
@@ -24,7 +25,7 @@ function testAttr(text, exp) {
 
 function replace(text, chinese, replaceString) {
   if (text) {
-    let textArr = text.split(/I18N\.get\(.+?\)/);
+    let textArr = text.split(callPattern);
     const newArr = JSON.parse(JSON.stringify(textArr));
     textArr.forEach((item, index, arr) => {
       arr[index] = item.replace(chinese, replaceString);
@@ -112,6 +113,13 @@ function generateAndWrite(sourceObj) {
   // }
 
   const result = arr.join('\n');
+
+  if (filename.includes('.js')) {
+    if (needImport.indexOf(filename) === -1 && arr.indexOf(importStatement) === -1) {
+      needImport.push(filename);
+    }
+  }
+
   fs.writeFileSync(filename, result, 'utf8');
   return 1;
 }

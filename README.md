@@ -82,12 +82,16 @@ module.exports = {
   importStatement: "import { I18N } from '@common/I18N';",
   // 调用语句
   callStatement: 'I18N.get',
+  // 防止重复修数据，正则过滤规则，和‘callStatement’配合
+  callPattern: /I18N\.get\(.+?\)/,
   // 语言文件目标目录
   targetDir: 'i18n-messages',
   // 不予扫描的文件，遵循 glob
   exclude: [],
-  // 自动中文做key
-  autoZhKey: true,
+  // 重写资源Key
+  setKey: (item) => { 
+    return "CONSOLE_KEY_" + Math.random(1000);
+  },
   // 自定义资源Key
   getKey: (item) => {
     return item.id
