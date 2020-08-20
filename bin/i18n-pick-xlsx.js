@@ -12,7 +12,6 @@ const result = locales.map(i => {
     'key': ''
   }
 });
-console.log(result);
 
 const wb = XLSX.utils.book_new();
 const ws = XLSX.utils.json_to_sheet(result);

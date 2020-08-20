@@ -6,7 +6,7 @@ const _config = {
   "textPattern": /[\u4e00-\u9fa5]/,
   "autoZhKey": true,
   "getKey": (item) => { // 重写资源Key
-    return item.key ? item.key : item.id;
+    return "CONSOLE_KEY_" + Math.random(1000);
   }
 }
 const path = require('path');
