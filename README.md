@@ -84,8 +84,6 @@ module.exports = {
   callStatement: 'I18N.get',
   // 防止重复修数据，正则过滤规则，和‘callStatement’配合
   callPattern: /I18N\.get\(.+?\)/,
-  // 语言文件目标目录
-  targetDir: 'i18n-messages',
   // 不予扫描的文件，遵循 glob
   exclude: [],
   // 重写资源Key
@@ -125,7 +123,4 @@ module.exports = {
 
 ### TODO
 
-- 需要增加一个自定义资源 key 的配置处理`getKey = () => {}`
-- **Vue**项目关于 expression 中的中文匹配问题
-- 默认执行`prettier`代码格式化导致位置匹配错误问题
-  - **暂时请先关闭编辑器自带的格式化功能**
+- 待续
