@@ -35,46 +35,39 @@ zanpm install @za/i18n-cli -g
 
 ## 相关指令
 
-### 扫描
 
-- react
-  `i18n-pick scan react [需要翻译的目录]`
+> `i18n-pick scan react [需要翻译的目录]`
 
-- vue
-  `i18n-pick scan vue [需要翻译的目录]`
+- react扫描
 
-### 导出 Excel
+> `i18n-pick scan vue [需要翻译的目录]`
 
-- 会导出到**i18n-sources**目录
+- vue扫描
 
-`i18n-pick xlsx`
+> `i18n-pick xlsx`
 
-### 读取 Excel
+- 导出 Excel，会导出到**i18n-sources**目录
 
+> `i18n-pick read`
+- 读取 Excel
 - 将翻译好的 excel 文件复制到**i18n-sources**目录，并重命名为`SheetJS.xlsx`,注意 excel 第一行表头是`id`,`defaultMessage`,`key`;
 - 会在**i18n-sources**目录生成一份**data.json**文件
-
-`i18n-pick read`
-
 - 重新生成**zh-CH.json**文件
 
-### React 自动注入替换
 
-`i18n-pick react`
+> `i18n-pick react`
+- React 自动注入替换
 
-### Vue 自动注入替换
+> `i18n-pick vue`
+- Vue 自动注入替换，表达式情况会遗漏，这块暂时没空去优化了，后面再看能不能集成 AST 去处理
 
-- 表达式情况会遗漏，这块暂时没空去优化了，后面再看能不能集成 AST 去处理
+> `i18n-pick export`
+- 导出 国际化本地 Locale 文件：zh_CN.js
+  
 
-`i18n-pick vue`
+## 配置
 
-### 导出 国际化本地 Locale 文件：zh_CN.js
-
-`i18n-pick export`
-
-### 配置
-
-i18n.config.js
+- **i18n.config.js**
 
 ```js
 module.exports = {
@@ -121,6 +114,6 @@ module.exports = {
 }
 ```
 
-### TODO
+## TODO
 
 - 待续
