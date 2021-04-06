@@ -1,7 +1,7 @@
 ## 安装
 
 ```bash
-zanpm install @za/i18n-cli -g
+npm install i18n-cli -g
 ```
 
 ## 环境
